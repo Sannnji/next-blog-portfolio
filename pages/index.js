@@ -5,7 +5,7 @@ import { PageTitle } from "../components/PageTitle";
 import { Section } from "../components/Section";
 
 export default function Home() {
-  const title = "Hello World, I'm James!";
+  const title = "Hello World, I'm James!👾";
   const subtitle = "I'm a full-stack MERN developer based in Rochester, NY";
 
   const aboutme1 = `Hi! I'm James Ji, a full-stack web developer based in Rochester, NY.
