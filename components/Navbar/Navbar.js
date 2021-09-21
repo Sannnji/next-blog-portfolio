@@ -21,7 +21,7 @@ export const Navbar = () => {
             <Link href="/portfolio">Portfolio</Link>
           </NavLink>
           <NavLink>
-            <Link href="/Blog">Blog</Link>
+            <Link href="/blog">Blog</Link>
           </NavLink>
         </Flex>
       </Flex>
