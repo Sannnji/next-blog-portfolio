@@ -4,8 +4,8 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 export const PageTitle = ({ title, subtitle }) => {
   return (
     <Box width={{ base: "80%", md: "65%" }} mb="16%">
-      <Text fontSize={{ base: "2xl", md: "4xl" }}>{title}</Text>
-      <Text fontSize={{ base: "2xl", md: "4xl" }} fontWeight="thin">
+      <Text fontSize={{ base: "3xl", md: "4xl" }}>{title}</Text>
+      <Text fontSize={{ base: "2xl", md: "3xl" }} fontWeight="thin">
         {subtitle}
       </Text>
       <ButtonGroup variant="solid" color="gray.600">
