@@ -1,20 +1,27 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import marked from "marked";
 
-import { Box, Text } from "@chakra-ui/react";
+import { serialize } from "next-mdx-remote/serialize";
+import { MDXRemote } from "next-mdx-remote";
+
+import { Box, Text, Heading } from "@chakra-ui/react";
+
+const Highlight = ({ text }) => (
+  <span style={{ color: "#4FD1C5" }}>{text}</span>
+);
+
+const components = { Highlight };
 
 export default function PostBlogPage({
   frontmatter: { title, date },
-  content,
-  slug,
+  mdxSource,
 }) {
   return (
     <Box>
-      <Text>{title}</Text>
-      <Text>{date}</Text>
-      <div dangerouslySetInnerHTML={{ __html: marked(content) }}></div>
+      <Heading fontWeight="semi-bold">{title}</Heading>
+      <Text mb={8}>{date}</Text>
+      <MDXRemote {...mdxSource} components={components} />
     </Box>
   );
 }
@@ -40,12 +47,13 @@ export async function getStaticProps({ params: { slug } }) {
   );
 
   const { data: frontmatter, content } = matter(markdownWithMeta);
+  const mdxSource = await serialize(content);
 
   return {
     props: {
       frontmatter,
       slug,
-      content,
+      mdxSource,
     },
   };
 }

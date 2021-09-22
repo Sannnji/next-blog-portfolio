@@ -1,13 +1,14 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import marked from "marked";
+import { serialize } from "next-mdx-remote/serialize";
+import { MDXRemote } from "next-mdx-remote";
+
 import { Box, Text, Heading, Image } from "@chakra-ui/react";
 
 export default function PostPage({
   frontmatter: { name, date, image },
-  content,
-  slug,
+  mdxSource,
 }) {
   return (
     <Box mt="4%">
@@ -17,7 +18,7 @@ export default function PostPage({
       <Text>{date}</Text>
       <Image src={image} alt="" float="right" width="450px" />
 
-      <div dangerouslySetInnerHTML={{ __html: marked(content) }}></div>
+      <MDXRemote {...mdxSource} />
     </Box>
   );
 }
@@ -44,11 +45,12 @@ export async function getStaticProps({ params: { slug } }) {
   );
 
   const { data: frontmatter, content } = matter(markdownWithMeta);
+  const mdxSource = await serialize(content);
 
   return {
     props: {
       frontmatter,
-      content,
+      mdxSource,
       slug,
     },
   };
