@@ -1,11 +1,14 @@
 import Link from "next/link";
-import { Box, Flex, Text } from "@chakra-ui/react";
+import ColorModeSwitcher from "./ColorModeSwitcher";
+import { Box, Flex, Text, useColorModeValue } from "@chakra-ui/react";
 
 import { NavLink } from "./NavLink";
 
 export const Navbar = () => {
+  const NavColor = useColorModeValue("white", "#1A202C");
+
   return (
-    <Flex width="100%" position="fixed" top={0} zIndex={1} bg="#1A202C">
+    <Flex width="100%" position="fixed" top={0} zIndex={1} bg={NavColor}>
       <Flex width="100%" px="13%" py={8} justifyContent="space-between">
         <Link href="/" passHref>
           <Text fontSize="xl" fontFamily="Pacifico, cursive">
@@ -13,7 +16,7 @@ export const Navbar = () => {
           </Text>
         </Link>
 
-        <Flex>
+        <Flex align="center">
           <NavLink>
             <Link href="/">Home</Link>
           </NavLink>
@@ -23,6 +26,7 @@ export const Navbar = () => {
           <NavLink>
             <Link href="/blog">Blog</Link>
           </NavLink>
+          <ColorModeSwitcher />
         </Flex>
       </Flex>
     </Flex>

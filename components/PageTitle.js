@@ -1,7 +1,15 @@
-import { Box, Text, ButtonGroup, IconButton } from "@chakra-ui/react";
+import {
+  Box,
+  Text,
+  ButtonGroup,
+  IconButton,
+  useColorModeValue,
+} from "@chakra-ui/react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 export const PageTitle = ({ title, subtitle }) => {
+  const IconColor = useColorModeValue("#1A202C", "white");
+
   return (
     <Box width={{ base: "80%", md: "65%" }} my={32}>
       <Text fontSize={{ base: "3xl", md: "4xl" }}>{title}</Text>
@@ -13,14 +21,14 @@ export const PageTitle = ({ title, subtitle }) => {
           as="a"
           href="https://www.linkedin.com/in/jamesji98/"
           aria-label="LinkedIn"
-          color="white"
+          color={IconColor}
           icon={<FaLinkedin fontSize="20px" />}
         />
         <IconButton
           as="a"
           href="https://github.com/Sannnji"
           aria-label="GitHub"
-          color="white"
+          color={IconColor}
           icon={<FaGithub fontSize="20px" />}
         />
       </ButtonGroup>
