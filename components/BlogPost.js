@@ -1,15 +1,16 @@
 import Link from "next/link";
 
-import { Box, Text, Button, Flex, Image } from "@chakra-ui/react";
+import { Box, Flex, Container, Text, Button, Image } from "@chakra-ui/react";
 
 export const BlogPost = ({ post }) => {
   return (
     <Flex
       flexDir={{ base: "column", md: "column", lg: "row" }}
-      maxW="800px"
-      maxH="250px"
+      justifyContent="space-between"
+      w="100%"
+      alignItems={{ base: "flex-start", lg: "center" }}
     >
-      <Box mr={4} maxW="300px">
+      <Box mr={4} w="75%">
         <Text fontSize="xl" mb={2}>
           {post.frontmatter.title}
         </Text>
@@ -21,7 +22,7 @@ export const BlogPost = ({ post }) => {
           </Button>
         </Link>
       </Box>
-      <Image src={post.frontmatter.image} alt="" width="100%" />
+      <Image src={post.frontmatter.image} alt="" objectFit="contain" w="75%" />
     </Flex>
   );
 };

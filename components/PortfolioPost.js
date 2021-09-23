@@ -6,10 +6,11 @@ export const PortfolioPost = ({ post }) => {
   return (
     <Flex
       flexDir={{ base: "column", md: "column", lg: "row" }}
-      maxW="800px"
-      maxH="300px"
+      justifyContent="space-between"
+      w="100%"
+      alignItems={{ base: "flex-start", lg: "center" }}
     >
-      <Box mr={4} maxW="300px">
+      <Box mr={4} w="75%">
         <Text fontSize="xl" mb={2}>
           {post.frontmatter.name}
         </Text>
@@ -29,7 +30,7 @@ export const PortfolioPost = ({ post }) => {
           </Button>
         </Link>
       </Box>
-      <Image src={post.frontmatter.image} alt="" width="100%" />
+      <Image src={post.frontmatter.image} alt="" objectFit="contain" w="75%" />
     </Flex>
   );
 };
