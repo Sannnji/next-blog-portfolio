@@ -5,7 +5,7 @@ import matter from "gray-matter";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
 
-import { Box, Text, Heading } from "@chakra-ui/react";
+import { Box, Text, Heading, Image } from "@chakra-ui/react";
 
 const Highlight = ({ text }) => (
   <span style={{ color: "#4FD1C5" }}>{text}</span>
@@ -14,13 +14,14 @@ const Highlight = ({ text }) => (
 const components = { Highlight };
 
 export default function PostBlogPage({
-  frontmatter: { title, date },
+  frontmatter: { title, date, image },
   mdxSource,
 }) {
   return (
-    <Box>
+    <Box mt={12}>
       <Heading fontWeight="semi-bold">{title}</Heading>
       <Text mb={8}>{date}</Text>
+      <Image src={image} alt="" float="right" width="450px" />
       <MDXRemote {...mdxSource} components={components} />
     </Box>
   );
