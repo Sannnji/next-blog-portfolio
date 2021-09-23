@@ -1,8 +1,10 @@
-import "../styles/globals.css";
+import { ChakraProvider } from "@chakra-ui/react";
 
 import { Navbar } from "../components/Navbar/Navbar";
-import { ChakraProvider } from "@chakra-ui/react";
 import { Layout } from "../components/Layout";
+import  Footer  from "../components/footer/Footer";
+
+import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -12,6 +14,7 @@ function MyApp({ Component, pageProps }) {
         <Layout>
           <Component {...pageProps} />
         </Layout>
+        <Footer />
       </ChakraProvider>
     </>
   );
