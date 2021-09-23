@@ -4,9 +4,13 @@ import Link from "next/link";
 
 export const PortfolioPost = ({ post }) => {
   return (
-    <Flex>
-      <Box w="40%" mr={4}>
-        <Text fontSize="xl" mb={4}>
+    <Flex
+      flexDir={{ base: "column", md: "column", lg: "row" }}
+      maxW="800px"
+      maxH="300px"
+    >
+      <Box mr={4} maxW="300px">
+        <Text fontSize="xl" mb={2}>
           {post.frontmatter.name}
         </Text>
 
@@ -25,7 +29,7 @@ export const PortfolioPost = ({ post }) => {
           </Button>
         </Link>
       </Box>
-      <Image src={post.frontmatter.image} alt="" width="400px" />
+      <Image src={post.frontmatter.image} alt="" width="100%" />
     </Flex>
   );
 };
