@@ -1,0 +1,59 @@
+---
+title: "How to make a blog site with NextJS and MDX"
+date: "9/22/21"
+image: "/images/blog/how-to-make-blog-site/main.png"
+---
+
+Yesterday I learned how to build a blog site using NextJS to display meta data and content from a markdown file!
+Before building this site that you are currently on, I was tried to build it using the MERN stack. It
+seemed like a great idea at first to showcase/test my full-stack abilities, but I encountered some problems like...
+
+<br />
+
+**How would I...**
+* <Highlight text="style" /> different words across multiple posts? 
+* display a block of code and format it accordingly?
+* embed a code sandbox Iframe
+
+<br />
+
+Thats's when I learned about the power of markdown and the ability to retrieve
+meta data from them, but I discovered that I couldn't use a native
+node-module like **fs** in create-react-app. It had to be ran on the
+server-side. That's when NextJS came to the rescue. 
+
+<br />
+
+With NextJS I was able to use **fs** in functions like <Highlight text="getStaticProps()" /> and <Highlight text="getStaticPaths()" /> because 
+they run on the server-side.
+
+<br />
+
+```javascript:blog.js
+export async function getStaticProps() {
+  const files = fs.readdirSync(path.join("posts/blog"));
+
+  const posts = files.map((filename) => {
+    const slug = filename.replace(".mdx", "");
+
+    const markdownWithMeta = fs.readFileSync(
+      path.join("posts/blog", filename),
+      "utf-8"
+    );
+
+    const { data: frontmatter, content } = matter(markdownWithMeta);
+    const preview = content.substring(0, 150) + "..."
+    return {
+      slug,
+      frontmatter,
+      preview
+    };
+  });
+
+  return {
+    props: {
+      posts,
+    },
+  };
+}
+```
