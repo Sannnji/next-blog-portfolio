@@ -9,7 +9,7 @@ export const Navbar = () => {
 
   return (
     <Flex width="100%" position="fixed" top={0} zIndex={1} bg={NavColor}>
-      <Flex width="100%" px="13%" py={8} justifyContent="space-between">
+      <Flex width="100%" px={{ base: "4%", md: "4%", lg: "13%" }} py={8} justifyContent="space-between">
         <Link href="/" passHref>
           <Text fontSize="xl" fontFamily="Pacifico, cursive">
             James Ji
