@@ -34,11 +34,12 @@ export async function getStaticProps() {
       "utf-8"
     );
 
-    const { data: frontmatter } = matter(markdownWithMeta);
-
+    const { data: frontmatter, content } = matter(markdownWithMeta);
+    const preview = content.substring(0, 150) + "..."
     return {
       slug,
       frontmatter,
+      preview
     };
   });
 

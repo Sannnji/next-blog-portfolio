@@ -22,7 +22,7 @@ export const PortfolioPost = ({ post }) => {
           ))}
         </Flex>
         <Text>{post.frontmatter.date}</Text>
-        <Text>{post.frontmatter.description}</Text>
+        <Text>{post.preview}</Text>
         <Link href={`portfolio/${post.slug}`} passHref>
           <Button as="a" my={4}>
             Read More
