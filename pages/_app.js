@@ -4,8 +4,6 @@ import { Navbar } from "../components/Navbar/Navbar";
 import { Layout } from "../components/Layout";
 import  Footer  from "../components/footer/Footer";
 
-import "../styles/globals.css";
-
 function MyApp({ Component, pageProps }) {
   return (
     <>
