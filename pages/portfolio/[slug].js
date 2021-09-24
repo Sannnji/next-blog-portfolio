@@ -11,12 +11,10 @@ export default function PostPage({
   mdxSource,
 }) {
   return (
-    <Box mt="4%">
-      <Heading fontWeight="semi-bold" mb={4}>
-        {name}
-      </Heading>
-      <Text>{date}</Text>
-      <Image src={image} alt="" float="right" width="450px" />
+    <Box mt={12}>
+      <Heading fontWeight="semi-bold">{name}</Heading>
+      <Text mb={8}>{date}</Text>
+      <Image src={image} alt="" float="right" width="450px" ml={8} />
 
       <MDXRemote {...mdxSource} />
     </Box>

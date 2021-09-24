@@ -11,11 +11,9 @@ export const PortfolioPost = ({ post }) => {
       alignItems={{ base: "flex-start", lg: "center" }}
     >
       <Box mr={4} w="75%">
-        <Text fontSize="xl" mb={2}>
-          {post.frontmatter.name}
-        </Text>
+        <Text fontSize="xl">{post.frontmatter.name}</Text>
 
-        <Flex>
+        <Flex mb={2}>
           {post.frontmatter.frameworks.map((element, index) => (
             <Text key={index} mr={2} fontWeight="thin">
               {element}
