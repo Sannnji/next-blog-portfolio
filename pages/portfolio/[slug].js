@@ -14,7 +14,14 @@ export default function PostPage({
     <Box mt={12}>
       <Heading fontWeight="semi-bold">{name}</Heading>
       <Text mb={8}>{date}</Text>
-      <Image src={image} alt="" float="right" width="450px" ml={8} />
+      <Image
+        src={image}
+        alt=""
+        float="right"
+        width="450px"
+        ml={8}
+        boxShadow="lg"
+      />
 
       <MDXRemote {...mdxSource} />
     </Box>

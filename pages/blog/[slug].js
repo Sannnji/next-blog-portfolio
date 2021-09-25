@@ -16,7 +16,14 @@ export default function PostBlogPage({
     <Box mt={12}>
       <Heading fontWeight="semi-bold">{title}</Heading>
       <Text mb={8}>{date}</Text>
-      <Image src={image} alt="" float="right" width="450px" ml={8} />
+      <Image
+        src={image}
+        alt=""
+        float="right"
+        width="450px"
+        ml={8}
+        boxShadow="lg"
+      />
 
       <MDXRemote {...mdxSource} components={MDXComponents} />
     </Box>

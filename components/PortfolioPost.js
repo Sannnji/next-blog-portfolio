@@ -28,7 +28,13 @@ export const PortfolioPost = ({ post }) => {
           </Button>
         </Link>
       </Box>
-      <Image src={post.frontmatter.image} alt="" objectFit="contain" w="75%" />
+      <Image
+        src={post.frontmatter.image}
+        alt=""
+        objectFit="contain"
+        w="75%"
+        boxShadow="lg"
+      />
     </Flex>
   );
 };
