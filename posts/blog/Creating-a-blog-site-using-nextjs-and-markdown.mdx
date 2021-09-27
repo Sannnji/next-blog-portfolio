@@ -1,0 +1,119 @@
+---
+title: "Creating a blog site using NextJS and Markdown"
+date: "September 22, 2021"
+image: "/images/blog/how-to-make-blog-site/main.png"
+---
+
+This post assumes a basic knowledge of NextJS and Markdown. For this is not a tutorial, but a blog about
+what I learned while creating this site and how awesome it was.
+
+## Background
+
+While I was browsing portfolio sites a week ago, I found that many of them included a blog section where the author
+would document their journey as a developer, and I thought that would be a great feature to implemnt on to my own site.
+Initially I attempted to implement the feature using my current knowledge on the MERN stack. The plan was to
+create a back-end along with a seperate (secret) site where I would submit my posts, but I ended up deciding against
+it becasue of Google 😂. Long story short, I was trying to figure out how others went about highlighting keywords and
+displaying code blocks, and upon googling I became aware of **Markdown** and **NextJS**, along with
+the amazing synergy betweem them.
+
+<br />
+
+## The Markdown and NextJS combo wombo
+
+Now that I was using NextJS and Markdown, I no longer needed a backend. Why? Because thanks to NextJS I
+was able to use the **fs** node-module within their server-side functions that are ran on build time, which in hand also allowed
+me to store Markdown files within my project directory and retrieve data from them. After that, all I had to
+do was use a package called **gray-matter** to turn the string of data into a JSON format.
+
+```javascript
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
+
+export async function getStaticProps() {
+  const files = fs.readdirSync(path.join("posts/blog"));
+
+  const posts = files.map((filename) => {
+    const markdownWithMeta = fs.readFileSync(
+      path.join("posts/blog", filename),
+      "utf-8"
+    );
+
+    const { data: frontmatter, content } = matter(markdownWithMeta);
+    const preview = content.substring(0, 150) + "...";
+    return { frontmatter, preview };
+  });
+
+  return { props: { posts } };
+}
+```
+
+Just like that, I now have an array of post objects returned from **getStaticProps** to pass into my component
+at build time.
+Isn't that awesome?! Guess what though? There's more!
+
+<br />
+
+## Slugs
+
+On top of the server-side functions, I was also made aware of the powerfull file-based routing that comes along with NextJS.
+I was now able to create pages dynamically for each post by creating a **[slug].js** file inside a blog folder within pages.
+And to link them together I added this line of code inside the **getStaticProps** function I made before and
+returned the value within each post object.
+
+```javascript
+const slug = filename.replace(".mdx", "");
+```
+
+Now I set the href inside NextJS's link component within the component I passed the post object into.
+
+```javascript
+import Link from "next/link";
+
+...
+<Link href={`portfolio/${post.slug}`} passHref>Read More</Link>
+...
+```
+
+Then inside the **[slug].js** file I add the following to define a list of paths that have to be
+created at build time. 
+
+```javascript
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
+import { serialize } from "next-mdx-remote/serialize";
+import { MDXRemote } from "next-mdx-remote";
+
+export async function getStaticPaths() {
+  const files = fs.readdirSync(path.join("posts/blog"));
+
+  const paths = files.map((filename) => ({
+    params: {
+      slug: filename.replace(".mdx", ""),
+    },
+  }));
+
+  return { paths, fallback: false };
+}
+```
+
+Now that the links finally are connected to their respective posts and the paths are being created at build time,
+we can add a **getStaticProps** function inside **[slug].js**, and pass the slug from  **getStaticPaths** to get that
+specific posts data to display in our component.
+
+
+```javascript
+export async function getStaticProps({ params: { slug } }) {
+  const markdownWithMeta = fs.readFileSync(
+    path.join("posts/blog", slug + ".mdx"),
+    "utf-8"
+  );
+
+  const { data: frontmatter, content } = matter(markdownWithMeta);
+  const mdxSource = await serialize(content);
+
+  return { props: { frontmatter, mdxSource } };
+}
+```
