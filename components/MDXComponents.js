@@ -1,11 +1,7 @@
 import {
   Box,
-  Alert,
-  Code,
   Heading,
-  Link,
   Text,
-  Divider,
   useColorModeValue,
 } from "@chakra-ui/react";
 

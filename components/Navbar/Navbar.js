@@ -1,6 +1,6 @@
 import Link from "next/link";
 import ColorModeSwitcher from "./ColorModeSwitcher";
-import { Box, Flex, Text, useColorModeValue } from "@chakra-ui/react";
+import { Flex, Text, useColorModeValue } from "@chakra-ui/react";
 
 import { NavLink } from "./NavLink";
 
