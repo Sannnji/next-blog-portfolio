@@ -1,10 +1,15 @@
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
 import Head from "next/head";
-import { Box, Text } from "@chakra-ui/react";
+import { Text } from "@chakra-ui/react";
 
 import { PageTitle } from "../components/PageTitle";
 import { Section } from "../components/Section";
+import { BlogPost } from "../components/BlogPost";
+import { PortfolioPost } from "../components/PortfolioPost";
 
-export default function Home() {
+export default function Home({ blog, portfolio }) {
   const title = "Hello World, I'm James!👾";
   const subtitle = "I'm a full-stack MERN developer based in Rochester, NY";
 
@@ -19,7 +24,6 @@ export default function Home() {
   const aboutme2 = `When I'm not coding and learning new technologies, you can find me
   gaming / streaming, drawing, cooking, finding ways to improve myself,
   and watching the Harry Potter series for the millionth time.`;
-
   return (
     <>
       <Head>
@@ -27,12 +31,71 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <PageTitle title={title} subtitle={subtitle} my="7%"/>
+      <PageTitle title={title} subtitle={subtitle} my="7%" />
       <Section heading="About Me">
         <Text>{aboutme1}</Text>
         <br />
         <Text>{aboutme2}</Text>
       </Section>
+
+      <Section heading="Recent Blogs">
+        {blog.map((post, index) => (
+          <BlogPost key={index} post={post} />
+        ))}
+      </Section>
+
+      <Section heading="Recent Projects">
+        {portfolio.map((post, index) => (
+          <PortfolioPost key={index} post={post} />
+        ))}
+      </Section>
     </>
   );
+}
+
+export async function getStaticProps() {
+  const portfolioFiles = fs.readdirSync(path.join("posts/portfolio"));
+
+  const portfolioPosts = portfolioFiles.map((filename) => {
+    const slug = filename.replace(".mdx", "");
+
+    const markdownWithMeta = fs.readFileSync(
+      path.join("posts/portfolio", filename),
+      "utf-8"
+    );
+
+    const { data: frontmatter, content } = matter(markdownWithMeta);
+    const preview = content.substring(0, 150) + "...";
+    return {
+      slug,
+      frontmatter,
+      preview,
+    };
+  });
+
+  const blogFiles = fs.readdirSync(path.join("posts/blog"));
+
+  const blogPosts = blogFiles.map((filename) => {
+    const slug = filename.replace(".mdx", "");
+
+    const markdownWithMeta = fs.readFileSync(
+      path.join("posts/blog", filename),
+      "utf-8"
+    );
+
+    const { data: frontmatter, content } = matter(markdownWithMeta);
+    const preview = content.substring(0, 150) + "...";
+    return {
+      slug,
+      frontmatter,
+      preview,
+    };
+  });
+
+  return {
+    props: {
+      portfolio: portfolioPosts,
+      blog: blogPosts,
+    },
+  };
 }
