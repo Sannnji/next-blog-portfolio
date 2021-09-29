@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { Box, Flex, Container, Text, Button, Image } from "@chakra-ui/react";
+import { Box, Flex, Text, Image } from "@chakra-ui/react";
 
 export const BlogPost = ({ post }) => {
   return (
@@ -11,16 +11,15 @@ export const BlogPost = ({ post }) => {
       alignItems={{ base: "flex-start", lg: "center" }}
     >
       <Box mr={4} w="75%">
-        <Text fontSize="xl" mb={2}>
-          {post.frontmatter.title}
-        </Text>
-        <Text>{post.frontmatter.date}</Text>
-        <Text>{post.preview}</Text>
         <Link href={`blog/${post.slug}`} passHref>
-          <Button as="a" my={4}>
-            Read More
-          </Button>
+          <Text as="a" fontSize="2xl">
+            {post.frontmatter.title}
+          </Text>
         </Link>
+
+        <Text mt={4}>{post.frontmatter.date}</Text>
+        <Text>{post.preview}</Text>
+
       </Box>
       <Image
         src={post.frontmatter.image}
