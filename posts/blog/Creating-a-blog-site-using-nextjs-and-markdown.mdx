@@ -4,27 +4,27 @@ date: "September 22, 2021"
 image: "/images/blog/how-to-make-blog-site/main.png"
 ---
 
-This post assumes a basic knowledge of NextJS and Markdown. For this is not a tutorial, but a blog about
-what I learned while creating this site and how awesome it was.
+
+This post assumes a basic knowledge of NextJS and Markdown. This is not a tutorial, 
+but a blog about what I learned while creating this site.
 
 ## Background
 
 While I was browsing portfolio sites a week ago, I found that many of them included a blog section where the author
-would document their journey as a developer, and I thought that would be a great feature to implemnt on to my own site.
-Initially I attempted to implement the feature using my current knowledge on the MERN stack. The plan was to
-create a back-end along with a seperate (secret) site where I would submit my posts, but I ended up deciding against
-it becasue of Google 😂. Long story short, I was trying to figure out how others went about highlighting keywords and
+would document their journey as a developer, and I thought that would be a great feature to implement on my site.
+Initially, I attempted to implement the feature using my current knowledge of the MERN stack. The plan was to
+create a back-end along with a separate (secret) site. Where I would submit my posts, but I ended up deciding against
+it because of Google 😂. Long story short, I was trying to figure out how others went about highlighting keywords and
 displaying code blocks, and upon googling I became aware of **Markdown** and **NextJS**, along with
-the amazing synergy betweem them.
+the amazing synergy between them.
 
 <br />
 
 ## The Markdown and NextJS combo wombo
 
-Now that I was using NextJS and Markdown, I no longer needed a backend. Why? Because thanks to NextJS I
-was able to use the **fs** node-module within their server-side functions that are ran on build time, which in hand also allowed
-me to store Markdown files within my project directory and retrieve data from them. After that, all I had to
-do was use a package called **gray-matter** to turn the string of data into a JSON format.
+Now that I was using NextJS and Markdown, I no longer needed a back-end. Why? Because thanks to NextJS's server-side functions,
+I was now able to store my Markdown files within my projects directory, and use the **fs** node-module to fetch data from them 
+on build-time. Afterward, all I had to do was, use a package called **gray-matter** to turn the string of data into a JSON format.
 
 ```javascript
 import fs from "fs";
@@ -57,10 +57,10 @@ Isn't that awesome?! Guess what though? There's more!
 
 ## Slugs
 
-On top of the server-side functions, I was also made aware of the powerfull file-based routing that comes along with NextJS.
+On top of the server-side functions, I was also made aware of the powerful file-based routing that's included with NextJS.
 I was now able to create pages dynamically for each post by creating a **[slug].js** file inside a blog folder within pages.
-And to link them together I added this line of code inside the **getStaticProps** function I made before and
-returned the value within each post object.
+And to connect them to each post that was listed. I started by adding this line of code inside the **getStaticProps** function
+I made before and returned the value within each post object.
 
 ```javascript
 const slug = filename.replace(".mdx", "");
@@ -99,8 +99,8 @@ export async function getStaticPaths() {
 }
 ```
 
-Now that the links are finally connected to their respective posts and the paths are being created at build time,
-we can add a **getStaticProps** function inside **[slug].js**, and pass the slug from  **getStaticPaths** to get that
+Now that the links are finally connected to their respective post, and the paths are being created at build time.
+We can add a **getStaticProps** function inside **[slug].js**, and pass the slug from  **getStaticPaths** to get that
 specific posts data to display in our component.
 
 
