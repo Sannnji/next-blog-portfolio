@@ -1,18 +1,16 @@
-import {
-  Box,
-  Heading,
-  Text,
-  useColorModeValue,
-} from "@chakra-ui/react";
+import { Box, Heading, Text, useColorModeValue } from "@chakra-ui/react";
 
 const CodeBlock = (props) => {
   return (
     <Box
+      minWidth="280px"
       bg={useColorModeValue("gray.100", "gray.600")}
       borderRadius="lg"
       p={4}
-      {...props}
-    />
+      overflow="hidden"
+    >
+      <Box overflow="scroll" {...props} />
+    </Box>
   );
 };
 

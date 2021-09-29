@@ -11,7 +11,7 @@ export default function PostPage({
   mdxSource,
 }) {
   return (
-    <Box mt={12}>
+    <Box width="100%">
       <Heading fontWeight="semi-bold">{name}</Heading>
       <Text mb={8}>{date}</Text>
       <Image
