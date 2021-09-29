@@ -13,17 +13,16 @@ export default function Home({ blog, portfolio }) {
   const title = "Hello World, I'm James!👾";
   const subtitle = "I'm a full-stack MERN developer based in Rochester, NY";
 
-  const aboutme1 = `Hi! I'm James Ji, a full-stack web developer based in Rochester, NY.
-  After graduating high school I took a step back from education and
-  worked as a opening/closing manager at a pizzaria for two years. I
-  ended up returning to education evidently and ultimatly decided to
-  become a web developer after I fell in love with coding. Upon making
-  that decision I enrolled and finished a udemy course on full-stack web
-  development by Angela Yu, and a full-stack bootcamp offered by the
-  loving NuCamp community.`;
-  const aboutme2 = `When I'm not coding and learning new technologies, you can find me
-  gaming / streaming, drawing, cooking, finding ways to improve myself,
-  and watching the Harry Potter series for the millionth time.`;
+  const aboutme1 = `Hi! I'm James Ji, a full-stack web developer based in Rochester, NY. After 
+  graduating high school I took a step back from education and worked as an opening/closing manager 
+  at a pizzeria for two years. I ended up returning to education evidently and ultimately decided to 
+  become a web developer after I fell in love with coding. Upon making that decision, I enrolled and 
+  finished a Udemy course on full-stack web development by Angela Yu, and a full-stack boot camp 
+  offered by the loving NuCamp community.`;
+
+  const aboutme2 = `When I'm not coding and learning new technologies, you can find me gaming/streaming, drawing, 
+  reading mangas, cooking, finding ways to improve myself, and watching the Harry Potter series for the millionth time.`;
+
   return (
     <>
       <Head>
