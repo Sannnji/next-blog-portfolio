@@ -12,7 +12,9 @@ export const PortfolioPost = ({ post }) => {
     >
       <Box mr={4} w="75%">
         <Link href={`portfolio/${post.slug}`} passHref>
-          <Text as="a" fontSize="2xl">{post.frontmatter.name}</Text>
+          <Text as="a" fontSize="2xl" _hover={{ color: "teal" }}>
+            {post.frontmatter.name}
+          </Text>
         </Link>
 
         <Flex mb={4}>

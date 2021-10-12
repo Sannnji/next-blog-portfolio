@@ -12,7 +12,7 @@ export const BlogPost = ({ post }) => {
     >
       <Box mr={4} w="75%">
         <Link href={`blog/${post.slug}`} passHref>
-          <Text as="a" fontSize="2xl">
+          <Text as="a" fontSize="2xl" _hover={{color: "teal"}}>
             {post.frontmatter.title}
           </Text>
         </Link>
