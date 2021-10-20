@@ -9,7 +9,7 @@ const CodeBlock = (props) => {
       p={4}
       overflow="hidden"
     >
-      <Box overflow="scroll" {...props} />
+      <Box overflow="auto" {...props} />
     </Box>
   );
 };
