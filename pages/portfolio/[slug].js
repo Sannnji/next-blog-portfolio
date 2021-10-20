@@ -1,10 +1,12 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
 
 import { Box, Text, Heading, Image } from "@chakra-ui/react";
+import MDXComponents from "../../components/MDXComponents";
 
 export default function PostPage({
   frontmatter: { name, date, image },
@@ -22,8 +24,7 @@ export default function PostPage({
         ml={8}
         boxShadow="lg"
       />
-
-      <MDXRemote {...mdxSource} />
+      <MDXRemote {...mdxSource} components={MDXComponents} />
     </Box>
   );
 }

@@ -6,7 +6,7 @@ import { PageTitle } from "../components/PageTitle";
 import { PortfolioPost } from "../components/PortfolioPost";
 
 export default function Portfolio({ posts }) {
-  const title = "Projects";
+  const title = "Projects 🖥️";
   const subtitle =
     "A selection of my favorite projects that I've worked on during my developer career";
 
@@ -35,7 +35,7 @@ export async function getStaticProps() {
     );
 
     const { data: frontmatter, content } = matter(markdownWithMeta);
-    const preview = content.substring(0, 150) + "..."
+    const preview = content.substring(0, 240) + "..."
     return {
       slug,
       frontmatter,

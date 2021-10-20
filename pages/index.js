@@ -10,7 +10,7 @@ import { BlogPost } from "../components/BlogPost";
 import { PortfolioPost } from "../components/PortfolioPost";
 
 export default function Home({ blog, portfolio }) {
-  const title = "Hello World, I'm James!👾";
+  const title = "Hello World, I'm James 👾";
   const subtitle = "I'm a full-stack MERN developer based in Rochester, NY";
 
   const aboutme1 = `Hi! I'm James Ji, a full-stack web developer based in Rochester, NY. After 
@@ -64,7 +64,7 @@ export async function getStaticProps() {
     );
 
     const { data: frontmatter, content } = matter(markdownWithMeta);
-    const preview = content.substring(0, 150) + "...";
+    const preview = content.substring(0, 240) + "...";
     return {
       slug,
       frontmatter,
@@ -83,7 +83,7 @@ export async function getStaticProps() {
     );
 
     const { data: frontmatter, content } = matter(markdownWithMeta);
-    const preview = content.substring(0, 150) + "...";
+    const preview = content.substring(0, 240) + "...";
     return {
       slug,
       frontmatter,
