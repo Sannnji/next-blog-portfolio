@@ -1,16 +1,14 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
-
-import { serialize } from "next-mdx-remote/serialize";
+import { Box, Text, Heading, Image } from "@chakra-ui/react";
 import { MDXRemote } from "next-mdx-remote";
 
-import { Box, Text, Heading, Image } from "@chakra-ui/react";
 import MDXComponents from "../../components/MDXComponents";
+import { getFiles, getFrontmatterBySlug } from "../../lib/mdx";
 
 export default function PostPage({
-  frontmatter: { name, date, image },
-  mdxSource,
+  post: {
+    frontmatter: { name, date, image },
+    mdxSource,
+  },
 }) {
   return (
     <Box width="100%">
@@ -30,34 +28,24 @@ export default function PostPage({
 }
 
 export async function getStaticPaths() {
-  const files = fs.readdirSync(path.join("posts/portfolio"));
-
-  const paths = files.map((filename) => ({
-    params: {
-      slug: filename.replace(".mdx", ""),
-    },
-  }));
+  const files = await getFiles("portfolio");
 
   return {
-    paths,
+    paths: files.map((filename) => ({
+      params: {
+        slug: filename.replace(".mdx", ""),
+      },
+    })),
     fallback: false,
   };
 }
 
 export async function getStaticProps({ params: { slug } }) {
-  const markdownWithMeta = fs.readFileSync(
-    path.join("posts/portfolio", slug + ".mdx"),
-    "utf-8"
-  );
-
-  const { data: frontmatter, content } = matter(markdownWithMeta);
-  const mdxSource = await serialize(content);
+  const post = await getFrontmatterBySlug(slug, "portfolio");
 
   return {
     props: {
-      frontmatter,
-      mdxSource,
-      slug,
+      post,
     },
   };
 }
