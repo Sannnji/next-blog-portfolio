@@ -1,6 +1,7 @@
 import { Box, Text, Heading, Image } from "@chakra-ui/react";
 import { MDXRemote } from "next-mdx-remote";
 
+import MDXComponents from "../../components/MDXComponents";
 import { getFiles, getFrontmatterBySlug } from "../../lib/mdx";
 
 export default function PostPage({
@@ -21,7 +22,7 @@ export default function PostPage({
         ml={8}
         boxShadow="lg"
       />
-      <MDXRemote {...mdxSource}/>
+      <MDXRemote {...mdxSource} components={MDXComponents} />
     </Box>
   );
 }
