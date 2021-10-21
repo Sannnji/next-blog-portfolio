@@ -1,6 +1,3 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
 import Head from "next/head";
 import { Text } from "@chakra-ui/react";
 
@@ -8,6 +5,8 @@ import { PageTitle } from "../components/PageTitle";
 import { Section } from "../components/Section";
 import { BlogPost } from "../components/BlogPost";
 import { PortfolioPost } from "../components/PortfolioPost";
+
+import { getAllFrontmatter } from "../lib/mdx";
 
 export default function Home({ blog, portfolio }) {
   const title = "Hello World, I'm James 👾";
@@ -53,48 +52,13 @@ export default function Home({ blog, portfolio }) {
 }
 
 export async function getStaticProps() {
-  const portfolioFiles = fs.readdirSync(path.join("posts/portfolio"));
-
-  const portfolioPosts = portfolioFiles.map((filename) => {
-    const slug = filename.replace(".mdx", "");
-
-    const markdownWithMeta = fs.readFileSync(
-      path.join("posts/portfolio", filename),
-      "utf-8"
-    );
-
-    const { data: frontmatter, content } = matter(markdownWithMeta);
-    const preview = content.substring(0, 240) + "...";
-    return {
-      slug,
-      frontmatter,
-      preview,
-    };
-  });
-
-  const blogFiles = fs.readdirSync(path.join("posts/blog"));
-
-  const blogPosts = blogFiles.map((filename) => {
-    const slug = filename.replace(".mdx", "");
-
-    const markdownWithMeta = fs.readFileSync(
-      path.join("posts/blog", filename),
-      "utf-8"
-    );
-
-    const { data: frontmatter, content } = matter(markdownWithMeta);
-    const preview = content.substring(0, 240) + "...";
-    return {
-      slug,
-      frontmatter,
-      preview,
-    };
-  });
+  const portfolioFM = await getAllFrontmatter("portfolio");
+  const blogFM = await getAllFrontmatter("blog");
 
   return {
     props: {
-      portfolio: portfolioPosts,
-      blog: blogPosts,
+      portfolio: portfolioFM,
+      blog: blogFM,
     },
   };
 }

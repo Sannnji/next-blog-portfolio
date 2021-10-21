@@ -1,9 +1,6 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
-
 import { PageTitle } from "../components/PageTitle";
 import { BlogPost } from "../components/BlogPost";
+import { getAllFrontmatter } from "../lib/mdx";
 
 export default function Blog({ posts }) {
   const title = "Blogs 📑";
@@ -22,24 +19,7 @@ export default function Blog({ posts }) {
 }
 
 export async function getStaticProps() {
-  const files = fs.readdirSync(path.join("posts/blog"));
-
-  const posts = files.map((filename) => {
-    const slug = filename.replace(".mdx", "");
-
-    const markdownWithMeta = fs.readFileSync(
-      path.join("posts/blog", filename),
-      "utf-8"
-    );
-
-    const { data: frontmatter, content } = matter(markdownWithMeta);
-    const preview = content.substring(0, 240) + "..."
-    return {
-      slug,
-      frontmatter,
-      preview
-    };
-  });
+  const posts = await getAllFrontmatter("blog");
 
   return {
     props: {
