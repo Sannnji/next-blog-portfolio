@@ -44,9 +44,17 @@ export const PortfolioPost = ({ post }) => {
           mt={{ base: 4, lg: 4 }}
           alignItems="center"
         >
-          <IconButton icon={<FaGithub />} />
+          <IconButton
+            as="a"
+            href={post.frontmatter.github}
+            icon={<FaGithub />}
+          />
           <Divider mx={4} orientation="vertical" height="25px" bg="white" />
-          <IconButton icon={<FaExternalLinkAlt />} />
+          <IconButton
+            as="a"
+            href={post.frontmatter.link}
+            icon={<FaExternalLinkAlt />}
+          />
         </Flex>
       </Box>
 
