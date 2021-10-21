@@ -1,19 +1,4 @@
-import { Box, Heading, Text, useColorModeValue } from "@chakra-ui/react";
-
-const CodeBlock = (props) => {
-  return (
-    <Box
-      my={4}
-      p={4}
-      minWidth="280px"
-      bg={useColorModeValue("gray.100", "gray.600")}
-      borderRadius="lg"
-      overflow="hidden"
-    >
-      <Box overflow="auto" {...props} />
-    </Box>
-  );
-};
+import { Box, Heading, Text, Code } from "@chakra-ui/react";
 
 const MDXComponents = {
   h1: (props) => (
@@ -28,7 +13,7 @@ const MDXComponents = {
   p: (props) => <Text {...props} />,
   ul: (props) => <Box as="ul" pt={2} pl={4} ml={2} {...props} />,
   strong: (props) => <span style={{ color: "#4FD1C5" }} {...props} />,
-  code: (props) => <CodeBlock {...props} />,
+  code: (props) => <Code {...props} />,
 };
 
 export default MDXComponents;
