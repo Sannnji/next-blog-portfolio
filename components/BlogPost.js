@@ -1,8 +1,10 @@
 import Link from "next/link";
 
-import { Box, Flex, Text, Image } from "@chakra-ui/react";
+import { Box, Flex, Text, Image, useColorModeValue } from "@chakra-ui/react";
 
 export const BlogPost = ({ post }) => {
+  const boxShadow = useColorModeValue("lg", "dark-lg");
+  
   return (
     <Flex
       flexDir={{ base: "column", md: "column", lg: "row" }}
@@ -28,7 +30,7 @@ export const BlogPost = ({ post }) => {
         w="75%"
         height="fit-content"
         objectFit="contain"
-        boxShadow="lg"
+        boxShadow={boxShadow}
       />
     </Flex>
   );

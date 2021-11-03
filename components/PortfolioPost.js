@@ -1,9 +1,19 @@
 import Link from "next/link";
-import { Flex, Box, Image, Text, IconButton, Divider } from "@chakra-ui/react";
+import {
+  Flex,
+  Box,
+  Image,
+  Text,
+  IconButton,
+  Divider,
+  useColorModeValue,
+} from "@chakra-ui/react";
 
 import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 
 export const PortfolioPost = ({ post }) => {
+  const boxShadow = useColorModeValue("lg", "dark-lg");
+  
   return (
     <Flex
       flexDir={{ base: "column", lg: "row" }}
@@ -64,7 +74,7 @@ export const PortfolioPost = ({ post }) => {
         w="75%"
         height="fit-content"
         objectFit="contain"
-        boxShadow="lg"
+        boxShadow={boxShadow}
       />
     </Flex>
   );
