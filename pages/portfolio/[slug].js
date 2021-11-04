@@ -1,4 +1,4 @@
-import { Box, Text, Heading, Image } from "@chakra-ui/react";
+import { Box, Text, Heading, Image, useColorModeValue } from "@chakra-ui/react";
 import { MDXRemote } from "next-mdx-remote";
 
 import MDXComponents from "../../components/MDXComponents";
@@ -10,6 +10,8 @@ export default function PostPage({
     mdxSource,
   },
 }) {
+  const boxShadow = useColorModeValue("lg", "dark-lg")
+
   return (
     <Box width="100%">
       <Heading fontWeight="semi-bold">{name}</Heading>
@@ -20,7 +22,7 @@ export default function PostPage({
         float="right"
         width="450px"
         ml={8}
-        boxShadow="lg"
+        boxShadow={boxShadow}
       />
       <MDXRemote {...mdxSource} components={MDXComponents} />
     </Box>
