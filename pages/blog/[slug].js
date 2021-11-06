@@ -13,15 +13,16 @@ export default function PostBlogPage({
   const boxShadow = useColorModeValue("lg", "dark-lg");
 
   return (
-    <Box mt={12}>
+    <Box width="100%" mt={12}>
       <Heading fontWeight="semi-bold">{title}</Heading>
       <Text mb={8}>{date}</Text>
       <Image
         src={image}
         alt=""
         float="right"
-        width="450px"
-        ml={8}
+        width="400px"
+        ml={12}
+        mb={8}
         boxShadow={boxShadow}
       />
 

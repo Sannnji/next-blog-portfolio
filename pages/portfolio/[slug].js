@@ -13,15 +13,16 @@ export default function PostPage({
   const boxShadow = useColorModeValue("lg", "dark-lg")
 
   return (
-    <Box width="100%">
+    <Box width="100%" mt={12}>
       <Heading fontWeight="semi-bold">{name}</Heading>
       <Text mb={8}>{date}</Text>
       <Image
         src={image}
         alt=""
         float="right"
-        width="450px"
-        ml={8}
+        width="400px"
+        ml={12}
+        mb={8}
         boxShadow={boxShadow}
       />
       <MDXRemote {...mdxSource} components={MDXComponents} />
