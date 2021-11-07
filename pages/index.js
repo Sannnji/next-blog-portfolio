@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { Text } from "@chakra-ui/react";
+import { SimpleGrid, Text } from "@chakra-ui/react";
 
 import { PageTitle } from "../components/PageTitle";
 import { Section } from "../components/Section";
@@ -37,9 +37,11 @@ export default function Home({ blog, portfolio }) {
       </Section>
 
       <Section heading="Recent Blogs">
-        {blog.map((post, index) => (
-          <BlogPost key={index} post={post} />
-        ))}
+        <SimpleGrid columns={{ base: 1, lg: 2 }} spacing={4}>
+          {blog.map((post, index) => (
+            <BlogPost key={index} post={post} />
+          ))}
+        </SimpleGrid>
       </Section>
 
       <Section heading="Recent Projects">
