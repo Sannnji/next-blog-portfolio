@@ -20,7 +20,7 @@ export const PortfolioPost = ({ post }) => {
       alignItems={{ base: "flex-start", lg: "center" }}
       justifyContent="space-between"
       w="100%"
-      my={16}
+      mb={16}
     >
       <Box mr={4} w="75%">
         <Link href={`portfolio/${post.slug}`} passHref>
