@@ -1,0 +1,45 @@
+---
+name: "Pokedex"
+date: "November 3, 2021"
+frameworks: ["React", "Apollo Graphql", "Express", "Chakra-UI"]
+image: "/images/portfolio/pokedex/main.png"
+github: "https://github.com/Sannnji/pokeapi-pokedex"
+link: "https://pokeapi-pokedex-jamesji.netlify.app/"
+---
+
+Pokedex is an application that categorizes, filters, and displays pokemon information. By default, the app
+queries pokemon by their respective generation. Any additional filters used will be based on the results
+of the generation filter. ( All intellectual property belongs to Nintendo, and shout out to everyone who helped
+develop PokeApi. ) Any inaccuracies can be reported to PokeApi's git repo.
+
+## Motivation
+
+I grew up as a big fan of the pokemon games. And like many others who grew up playing pokemon, I constantly
+referred to a third-party site/guide for information on pokemon. "When does my Piplup evolve? What does the
+shiny version look like?" Well, Serebii will tell you. This site had every ounce of information on pokemon,
+the games, show, trading cards, and probably more. I loved the website and used it whenever I needed it, and
+still do to this day. However, I always wished they had a better way to search pokemon besides using a select
+tag for each generation. That's why I made this application. I wanted to make something more visually
+pleasing and easier to navigate. Because I don't know about you, but I find it easier to spot Pikachu from rows of
+pokemon box sprites than a select tag's list of names.
+
+## Challenges
+
+Surprisingly, the biggest challenge I faced while building this application was figuring out how to
+implement evolution logic. Due to how the authors of the API structured the data, getting each pokemon's
+previous evolution and next evolution ended up being a bit of a head-scratcher. The issue was that I wanted
+to receive the full evolution tree no matter which pokemon I selected within that tree. For example, if I
+queried Charizard, I wanted it to return the previous evolution (Charmeleon) and the evolution previous to
+that one (Charmander), and vice versa. Since I planned on returning a pokemon object from the evolutions
+queries to receive their respective sprite, I decided to query evolve-from and evolve-to on themselves within
+the pokemon query.
+
+![alt](/images/portfolio/pokedex/evolution-example.png)
+
+## Afterthoughts
+
+There are still a couple of features/changes I'd like to add, like routing, animations, additional data, and
+refactoring. But I'm pretty happy with how the site turned out and the current state of it. While I still
+have a lot of room for improvement in best practices and algorithms, I had a lot of fun building this project
+and am proud of how far I've come.
+
