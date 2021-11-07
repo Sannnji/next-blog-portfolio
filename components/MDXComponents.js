@@ -24,7 +24,7 @@ const MDXComponents = {
       {...props}
     />
   ),
-  img: (props) => <Image src={props.src} alt={props.alt} mt={8} />,
+  img: (props) => <Image src={props.src} alt={props.alt} mt={8} boxShadow="lg" />,
 };
 
 export default MDXComponents;

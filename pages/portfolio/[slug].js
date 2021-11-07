@@ -10,22 +10,42 @@ export default function PostPage({
     mdxSource,
   },
 }) {
-  const boxShadow = useColorModeValue("lg", "dark-lg")
+  const boxShadow = useColorModeValue("lg", "dark-lg");
 
   return (
-    <Box width="100%" mt={12}>
-      <Heading fontWeight="semi-bold">{name}</Heading>
-      <Text mb={8}>{date}</Text>
-      <Image
-        src={image}
-        alt=""
-        float="right"
-        width="400px"
-        ml={12}
-        mb={8}
-        boxShadow={boxShadow}
-      />
-      <MDXRemote {...mdxSource} components={MDXComponents} />
+    <Box width="100%" mt={{ base: 12, lg: 4 }}>
+      <Box position="relative">
+        <Box
+          position="absolute"
+          bg="rgba(0, 0, 0, 0.5)"
+          color="white"
+          width="80%"
+          bottom={{ base: 5, lg: 20 }}
+          pl={8}
+          py={4}
+        >
+          <Heading fontWeight="semi-bold">{name}</Heading>
+          <Text>{date}</Text>
+        </Box>
+
+        <Image
+          src={image}
+          alt=""
+          mb={8}
+          borderRadius="lg"
+          boxShadow={boxShadow}
+        />
+      </Box>
+
+      <Box
+        bg="#EDF2F7"
+        color="black"
+        px={{ base: 4, lg: 20 }}
+        py={{ base: 4, lg: 8 }}
+        borderRadius="lg"
+      >
+        <MDXRemote {...mdxSource} components={MDXComponents} />
+      </Box>
     </Box>
   );
 }
