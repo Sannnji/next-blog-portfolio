@@ -13,7 +13,7 @@ import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 
 export const PortfolioPost = ({ post }) => {
   const boxShadow = useColorModeValue("lg", "dark-lg");
-  
+
   return (
     <Flex
       flexDir={{ base: "column", lg: "row" }}
@@ -30,21 +30,15 @@ export const PortfolioPost = ({ post }) => {
         </Link>
         <Text>{post.frontmatter.date}</Text>
         <Flex mb={4}>
-          {post.frontmatter.frameworks.map((element, index) => {
-            if (index === post.frontmatter.frameworks.length - 1) {
-              return (
-                <Text key={index} fontWeight="thin">
-                  {element}
-                </Text>
-              );
-            } else {
-              return (
-                <Text key={index} mr={1} fontWeight="thin">
-                  {element} |
-                </Text>
-              );
-            }
-          })}
+          <Text>
+            {post.frontmatter.frameworks.map((element, index) => {
+              if (index === post.frontmatter.frameworks.length - 1) {
+                return  element ;
+              } else {
+                return  element  + " | ";
+              }
+            })}
+          </Text>
         </Flex>
 
         <Text>{post.preview}</Text>
