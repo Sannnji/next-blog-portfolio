@@ -13,7 +13,7 @@ export const BlogPost = ({ post }) => {
       w="100%"
       mb={2}
     >
-      <Box bg="#EDF2F7" borderRadius="lg" p={4}>
+      <Box bg="#EDF2F7" color="black" borderRadius="lg" p={4}>
         <Link href={`blog/${post.slug}`} passHref>
           <Text as="a" fontSize="2xl" _hover={{ color: "teal" }}>
             {post.frontmatter.title}
