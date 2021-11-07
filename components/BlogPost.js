@@ -11,9 +11,9 @@ export const BlogPost = ({ post }) => {
       alignItems={{ base: "flex-start", lg: "center" }}
       justifyContent="space-between"
       w="100%"
-      my={16}
+      mb={2}
     >
-      <Box mr={4} mb={{ base: 4, lg: 0 }}>
+      <Box bg="#EDF2F7" borderRadius="lg" p={4}>
         <Link href={`blog/${post.slug}`} passHref>
           <Text as="a" fontSize="2xl" _hover={{ color: "teal" }}>
             {post.frontmatter.title}
