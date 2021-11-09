@@ -1,10 +1,9 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import { useColorMode } from "@chakra-ui/react";
 import { Global, css } from "@emotion/react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 
 import { Navbar } from "../components/Navbar/Navbar";
-import { Layout } from "../components/Layout";
 import Footer from "../components/footer/Footer";
 import { prismDarkTheme, prismLightTheme } from "../styles/prism";
 
