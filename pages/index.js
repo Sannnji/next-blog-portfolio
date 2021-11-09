@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { SimpleGrid, Text } from "@chakra-ui/react";
 
+import { Layout } from "../components/Layout";
 import { PageTitle } from "../components/PageTitle";
 import { Section } from "../components/Section";
 import { BlogPost } from "../components/BlogPost";
@@ -23,7 +24,7 @@ export default function Home({ blog, portfolio }) {
   reading mangas, cooking, finding ways to improve myself, and watching the Harry Potter series for the millionth time.`;
 
   return (
-    <>
+    <Layout>
       <Head>
         <title>Blog Portfolio</title>
         <link rel="icon" href="/favicon.ico" />
@@ -49,7 +50,7 @@ export default function Home({ blog, portfolio }) {
           <PortfolioPost key={index} post={post} />
         ))}
       </Section>
-    </>
+    </Layout>
   );
 }
 

@@ -1,6 +1,7 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import { useColorMode } from "@chakra-ui/react";
 import { Global, css } from "@emotion/react";
+import { motion, AnimatePresence } from "framer-motion";
 
 import { Navbar } from "../components/Navbar/Navbar";
 import { Layout } from "../components/Layout";
@@ -40,17 +41,17 @@ const GlobalStyle = ({ children }) => {
   );
 };
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps, router }) {
   return (
     <>
       <ChakraProvider>
-        <Navbar />
-        <Layout>
-          <GlobalStyle>
-            <Component {...pageProps} />
-          </GlobalStyle>
-        </Layout>
-        <Footer />
+        <GlobalStyle>
+          <Navbar />
+          <AnimatePresence exitBeforeEnter>
+            <Component {...pageProps} key={router.route} />
+          </AnimatePresence>
+          <Footer />
+        </GlobalStyle>
       </ChakraProvider>
     </>
   );

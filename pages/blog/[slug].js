@@ -1,6 +1,7 @@
 import { Box, Text, Heading, useColorModeValue } from "@chakra-ui/react";
 import { MDXRemote } from "next-mdx-remote";
 
+import { Layout } from "../../components/Layout";
 import MDXComponents from "../../components/MDXComponents";
 import { getFiles, getFrontmatterBySlug } from "../../lib/mdx";
 
@@ -13,20 +14,22 @@ export default function PostBlogPage({
   const boxShadow = useColorModeValue("lg", "dark-lg");
 
   return (
-    <Box width="100%" mt={{ base: 12, lg: 4 }}>
-      <Heading fontWeight="semi-bold">{title}</Heading>
-      <Text mb={8}>{date}</Text>
+    <Layout>
+      <Box width="100%" mt={{ base: 12, lg: 4 }}>
+        <Heading fontWeight="semi-bold">{title}</Heading>
+        <Text mb={8}>{date}</Text>
 
-      <Box
-        bg="#EDF2F7"
-        color="black"
-        px={{ base: 4, lg: 20 }}
-        py={{ base: 4, lg: 8 }}
-        borderRadius="lg"
-      >
-        <MDXRemote {...mdxSource} components={MDXComponents} />
+        <Box
+          bg="#EDF2F7"
+          color="black"
+          px={{ base: 4, lg: 20 }}
+          py={{ base: 4, lg: 8 }}
+          borderRadius="lg"
+        >
+          <MDXRemote {...mdxSource} components={MDXComponents} />
+        </Box>
       </Box>
-    </Box>
+    </Layout>
   );
 }
 
