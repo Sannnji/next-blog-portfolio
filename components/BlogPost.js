@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { Box, Flex, Text, Image, useColorModeValue } from "@chakra-ui/react";
+import { Box, Flex, Text, useColorModeValue } from "@chakra-ui/react";
 
 export const BlogPost = ({ post }) => {
   const boxShadow = useColorModeValue("lg", "dark-lg");
