@@ -1,5 +1,5 @@
 import { Box } from "@chakra-ui/react";
-import PageTranstion from "./framer/pageTransition";
+import PageTranstion from "./framer/PageTransition";
 
 export const Layout = ({ children }) => {
   return (
