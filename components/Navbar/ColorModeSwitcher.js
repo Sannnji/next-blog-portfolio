@@ -1,18 +1,23 @@
 import { IconButton, useColorMode, useColorModeValue } from "@chakra-ui/react";
 
-import { FaMoon, FaSun } from "react-icons/fa";
+import AnimatedSVG from "./AnimatedSVG";
 
 function ColorModeSwitcher() {
   const { toggleColorMode } = useColorMode();
-  const SwitchIcon = useColorModeValue(FaMoon, FaSun);
+  const isDarkMode = useColorModeValue(true, false);
+  const bgColor = useColorModeValue("#1A202C", "#3F444E");
 
   return (
     <IconButton
       ml={2}
       aria-label="Color Mode Switcher"
+      bg={bgColor}
+      _hover="none"
+      _focus={{ outline: "none", boxShadow: "none" }}
       onClick={toggleColorMode}
-      icon={<SwitchIcon />}
-    />
+    >
+      <AnimatedSVG isDarkMode={isDarkMode} />
+    </IconButton>
   );
 }
 
