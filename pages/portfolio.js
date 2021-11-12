@@ -3,6 +3,8 @@ import { PageTitle } from "../components/PageTitle";
 import { PortfolioPost } from "../components/PortfolioPost";
 import { getAllFrontmatter } from "../lib/mdx";
 
+import { sortByDate } from "../utils/sortByDate";
+
 export default function Portfolio({ posts }) {
   const title = "Projects 🖥️";
   const subtitle =
@@ -24,7 +26,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      posts,
+      posts: posts.sort(sortByDate),
     },
   };
 }

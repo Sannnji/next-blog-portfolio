@@ -8,6 +8,7 @@ import { BlogPost } from "../components/BlogPost";
 import { PortfolioPost } from "../components/PortfolioPost";
 
 import { getAllFrontmatter } from "../lib/mdx";
+import { sortByDate } from "../utils/sortByDate";
 
 export default function Home({ blog, portfolio }) {
   const title = "Hello World, I'm James 👾";
@@ -60,8 +61,8 @@ export async function getStaticProps() {
 
   return {
     props: {
-      portfolio: portfolioFM,
-      blog: blogFM,
+      portfolio: portfolioFM.sort(sortByDate),
+      blog: blogFM.sort(sortByDate),
     },
   };
 }
