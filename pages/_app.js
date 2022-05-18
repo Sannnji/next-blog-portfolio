@@ -31,7 +31,8 @@ const GlobalStyle = ({ children }) => {
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            background: ${colorMode === "light" ? "white" : "#1A202C"};
+            background: ${colorMode === "light" ? "#FFFCF9" : "#1A202C"};
+            font-family: 'Sofia', sans-serif
           }
         `}
       />
