@@ -48,7 +48,7 @@ export const PortfolioPost = ({ post }) => {
           <Heading
             as="a"
             fontSize={{ base: "20px", lg: "32px" }}
-            _hover={{ color: "teal" }}
+            _hover={{ color: "#53E4C1" }}
           >
             {post.frontmatter.name}
           </Heading>
