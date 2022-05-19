@@ -1,14 +1,11 @@
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Heading } from "@chakra-ui/react";
 
 export const Section = ({ heading, children }) => {
   return (
-    <Box
-      width={{ base: "auto", md: heading == "Recent Blogs" ? "100%" : "75%" }}
-      py={8}
-    >
-      <Text fontSize="4xl" my={4}>
+    <Box py={8}>
+      <Heading my={4} fontSize="4xl" color="#53E4C1">
         {heading}
-      </Text>
+      </Heading>
       <Box>{children}</Box>
     </Box>
   );
