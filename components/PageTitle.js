@@ -1,6 +1,7 @@
 import {
   Box,
   Text,
+  Heading,
   ButtonGroup,
   IconButton,
   useColorModeValue,
@@ -12,7 +13,7 @@ export const PageTitle = ({ title, subtitle }) => {
 
   return (
     <Box width={{ base: "80%", md: "65%" }} my={32}>
-      <Text fontSize={{ base: "3xl", md: "4xl" }}>{title}</Text>
+      <Heading color="#53E4C1">{title}</Heading>
       <Text fontSize={{ base: "2xl", md: "3xl" }} fontWeight="thin">
         {subtitle}
       </Text>
