@@ -5,12 +5,12 @@ const MDXComponents = {
     <Heading as="h1" size="xl" my={4} fontWeight="semibold" {...props} />
   ),
   h2: (props) => (
-    <Heading as="h2" size="lg" mt={12} fontWeight="semibold" {...props} />
+    <Heading as="h2" size="lg" mt={12} mb={8} fontWeight="semibold" {...props} />
   ),
   h4: (props) => (
     <Heading as="h4" size="md" my={4} fontWeight="semibold" {...props} />
   ),
-  p: (props) => <Text my={2} {...props} />,
+  p: (props) => <Text my={2} fontWeight="thin" {...props} />,
   ul: (props) => <Box as="ul" pt={2} pl={4} ml={2} {...props} />,
   strong: (props) => <span style={{ color: "#4FD1C5" }} {...props} />,
   code: (props) => <Code {...props} />,
