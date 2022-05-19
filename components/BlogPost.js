@@ -1,28 +1,28 @@
 import Link from "next/link";
 
-import { Box, Flex, Text, useColorModeValue } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 
 export const BlogPost = ({ post }) => {
-  const boxShadow = useColorModeValue("lg", "dark-lg");
 
   return (
-    <Flex
-      flexDir={{ base: "column", md: "column", lg: "row" }}
-      alignItems={{ base: "flex-start", lg: "center" }}
-      justifyContent="space-between"
+    <Box
+      bg="rgba(255,255,255, 0.2)"
       w="100%"
       mb={2}
+      p={8}
+      boxShadow="2xl"
+      borderRadius="lg"
     >
-      <Box bg="#EDF2F7" color="black" borderRadius="lg" p={4}>
-        <Link href={`blog/${post.slug}`} passHref>
-          <Text as="a" fontSize="2xl" _hover={{ color: "teal" }}>
-            {post.frontmatter.title}
-          </Text>
-        </Link>
+      <Link href={`blog/${post.slug}`} passHref>
+        <Text as="a" fontSize="2xl" _hover={{ color: "#53E4C1" }}>
+          {post.frontmatter.title}
+        </Text>
+      </Link>
 
-        <Text mb={4}>{post.frontmatter.date}</Text>
-        <Text>{post.preview}</Text>
-      </Box>
-    </Flex>
+      <Text mb={4} color="#9B9B9B">
+        {post.frontmatter.date}
+      </Text>
+      <Text>{post.preview}</Text>
+    </Box>
   );
 };
