@@ -20,7 +20,7 @@ export default function PostBlogPage({
         <Text mb={8}>{date}</Text>
 
         <Box
-          bg="#EDF2F7"
+          bg="white"
           color="black"
           px={{ base: 4, lg: 20 }}
           py={{ base: 4, lg: 8 }}
