@@ -18,7 +18,7 @@ export const PortfolioPost = ({ post }) => {
       w={{ sm: "100%", md: "auto" }}
       direction={{ base: "column", md: "row" }}
       bg="rgba(255,255,255, 0.2)"
-      boxShadow={"2xl"}
+      boxShadow={"xl"}
       padding={4}
       mt={20}
     >
