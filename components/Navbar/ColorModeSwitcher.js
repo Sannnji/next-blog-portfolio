@@ -5,7 +5,7 @@ import AnimatedSVG from "./AnimatedSVG";
 function ColorModeSwitcher() {
   const { toggleColorMode } = useColorMode();
   const isDarkMode = useColorModeValue(true, false);
-  const bgColor = useColorModeValue("#1A202C", "#3F444E");
+  const bgColor = useColorModeValue("gray.600", "#3F444E");
 
   return (
     <IconButton
