@@ -20,7 +20,7 @@ export const Navbar = () => {
           <Text
             fontSize="xl"
             fontFamily="Pacifico, cursive"
-            _hover={{ color: "teal", cursor: "pointer" }}
+            _hover={{ color: "#53E4C1", cursor: "pointer" }}
           >
             James
           </Text>
