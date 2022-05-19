@@ -1,4 +1,11 @@
-import { Box, Text, Heading, Image, useColorModeValue } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Text,
+  Heading,
+  Image,
+  useColorModeValue,
+} from "@chakra-ui/react";
 import { MDXRemote } from "next-mdx-remote";
 
 import { Layout } from "../../components/Layout";
@@ -11,43 +18,51 @@ export default function PostPage({
     mdxSource,
   },
 }) {
-  const boxShadow = useColorModeValue("lg", "dark-lg");
+  const boxShadow = useColorModeValue("lg", "2xl");
 
   return (
     <Layout>
-      <Box width="100%" mt={{ base: 12, lg: 4 }}>
-        <Box position="relative">
-          <Box
-            position="absolute"
-            bg="rgba(0, 0, 0, 0.5)"
-            color="white"
-            width="80%"
-            bottom={{ base: 5, lg: 20 }}
-            pl={8}
-            py={4}
-          >
-            <Heading fontWeight="semi-bold">{name}</Heading>
-            <Text>{date}</Text>
-          </Box>
-
+      <Box width="100%" mt={{ base: 12, lg: 4 }} zIndex={-1}>
+        <Flex justifyContent="center" flexDir="column">
           <Image
+            zIndex={0}
+            borderColor={useColorModeValue(null, "white")}
+            border={useColorModeValue(null, "1px")}
             src={image}
             alt=""
             mb={8}
             borderRadius="lg"
             boxShadow={boxShadow}
           />
-        </Box>
 
-        <Box
-          bg="#EDF2F7"
-          color="black"
-          px={{ base: 4, lg: 20 }}
-          py={{ base: 4, lg: 8 }}
-          borderRadius="lg"
-        >
-          <MDXRemote {...mdxSource} components={MDXComponents} />
-        </Box>
+          <Box
+            bg="white"
+            color={"black"}
+            boxShadow="2xl"
+            zIndex={0}
+            mt={{ base: -14, md: -20, lg: -24 }}
+            mx={{ base: 2, md: 24 }}
+            px={{ base: 4, md: 8, lg: 20 }}
+            py={{ base: 4, md: 8, lg: 8 }}
+            borderRadius="lg"
+          >
+            <Box
+              zIndex={0}
+              py={4}
+              position="relative"
+              bottom={{ base: 10, md: 24, lg: 20 }}
+              bg="rgba(0, 0, 0, 0.5)"
+              color="white"
+              textAlign="center"
+              borderRadius="lg"
+            >
+              <Heading>{name}</Heading>
+              <Text fontWeight="thin">{date}</Text>
+            </Box>
+
+            <MDXRemote {...mdxSource} components={MDXComponents} />
+          </Box>
+        </Flex>
       </Box>
     </Layout>
   );
