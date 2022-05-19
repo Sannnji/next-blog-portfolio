@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Heading, Text } from "@chakra-ui/react";
 
 export const BlogPost = ({ post }) => {
 
@@ -10,13 +10,13 @@ export const BlogPost = ({ post }) => {
       w="100%"
       mb={2}
       p={8}
-      boxShadow="2xl"
+      boxShadow="xl"
       borderRadius="lg"
     >
       <Link href={`blog/${post.slug}`} passHref>
-        <Text as="a" fontSize="2xl" _hover={{ color: "#53E4C1" }}>
+        <Heading as="a" fontSize="2xl" _hover={{ color: "#53E4C1" }}>
           {post.frontmatter.title}
-        </Text>
+        </Heading>
       </Link>
 
       <Text mb={4} color="#9B9B9B">
