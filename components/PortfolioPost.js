@@ -25,6 +25,7 @@ export const PortfolioPost = ({ post }) => {
       <Flex flex="1" _hover={{ cursor: "pointer" }}>
         <Link href={`portfolio/${post.slug}`} passHref>
           <Image
+          rounded="lg"
             objectFit="cover"
             align={"0px"}
             boxSize="100%"
