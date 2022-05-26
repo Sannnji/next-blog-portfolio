@@ -16,10 +16,9 @@ export default function Home({ blog, portfolio }) {
 
   const aboutme1 = `Hi! I'm James Ji, a full-stack web developer based in Rochester, NY. After 
   graduating high school I took a step back from education and worked as an opening/closing manager 
-  at a pizzeria for two years. I ended up returning to education evidently and ultimately decided to 
-  become a web developer after I fell in love with coding. Upon making that decision, I enrolled and 
-  finished a Udemy course on full-stack web development by Angela Yu, and a full-stack boot camp 
-  offered by the loving NuCamp community.`;
+  at a pizzeria for two years. After returning to college I ultimately decided to become a developer 
+  after I fell in love with coding. Following that decision, I explored various languages and 
+  completed a full-stack MERN boot camp offered by the loving NuCamp community.`;
 
   const aboutme2 = `When I'm not coding and learning new technologies, you can find me gaming/streaming, drawing, 
   reading mangas, cooking, finding ways to improve myself, and watching the Harry Potter series for the millionth time.`;
