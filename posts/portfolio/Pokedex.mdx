@@ -10,7 +10,7 @@ link: "https://pokeapi-pokedex-jamesji.netlify.app/"
 Pokedex is an application that categorizes, filters, and displays pokemon information. By default, the app
 queries pokemon by their respective generation. Any additional filters used will be based on the results
 of the generation filter. ( All intellectual property belongs to Nintendo, and shout out to everyone who helped
-develop PokeApi. ) Any inaccuracies can be reported to PokeApi's git repo.
+develop PokeApi. ) Any inaccuracies can be reported to PokeApi's Git repo.
 
 ## Motivation
 
@@ -23,22 +23,11 @@ tag for each generation. That's why I made this application. I wanted to make so
 pleasing and easier to navigate. Because I don't know about you, but I find it easier to spot Pikachu from rows of
 pokemon box sprites than a select tag's list of names.
 
-## Challenges
-
-Surprisingly, the biggest challenge I faced while building this application was figuring out how to
-implement evolution logic. Due to how the authors of the API structured the data, getting each pokemon's
-previous evolution and next evolution ended up being a bit of a head-scratcher. The issue was that I wanted
-to receive the full evolution tree no matter which pokemon I selected within that tree. For example, if I
-queried Charizard, I wanted it to return the previous evolution (Charmeleon) and the evolution previous to
-that one (Charmander), and vice versa. Since I planned on returning a pokemon object from the evolutions
-queries to receive their respective sprite, I decided to query evolve-from and evolve-to on themselves within
-the pokemon query.
-
 ![alt](/images/portfolio/pokedex/evolution-example.png)
 
 ## Afterthoughts
 
-There are still a couple of features/changes I'd like to add, like routing, animations, additional data, and
+There are still a couple of features/changes I'd like to add, like animations, additional data, and
 refactoring. But I'm pretty happy with how the site turned out and the current state of it. While I still
 have a lot of room for improvement in best practices and algorithms, I had a lot of fun building this project
 and am proud of how far I've come.
