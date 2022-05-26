@@ -10,7 +10,7 @@ const MDXComponents = {
   h4: (props) => (
     <Heading as="h4" size="md" my={4} fontWeight="semibold" {...props} />
   ),
-  p: (props) => <Text my={2} fontWeight="thin" {...props} />,
+  p: (props) => <Text my={2} fontSize="1.25rem" fontWeight="thin" {...props} />,
   ul: (props) => <Box as="ul" pt={2} pl={4} ml={2} {...props} />,
   strong: (props) => <span style={{ color: "#4FD1C5" }} {...props} />,
   code: (props) => <Code {...props} />,
